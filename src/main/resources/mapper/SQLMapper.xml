@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper,如果有多个mapper文件，这个必须唯一 -->
+  <mapper namespace="javaa.model">
+   <!--获取用户登录接口-->
+    <select id="userlogin" parameterType="Integer" resultType="javaa.model.Userlogin">
+              SELECT * FROM userlogin WHERE id=#{id}
+    </select>
+    <!--- 添加用户接口-->
+    <select id="adduser" parameterType="Integer" resultType="javaa.model.Adduser">
+        SELECT * FROM adduser WHERE id=#{id};
+    </select>
+    <!---获取用户-->
+    <select id="getuser" parameterType="Integer" resultType="javaa.model.Getuser">
+        SELECT * FROM getuser WHERE id=#{id};
+    </select>
+    <!--获取用户列表-->
+    <select id="getuserList" parameterType="Integer" resultType="javaa.model.GetuserList">
+        SELECT * FROM getuserlist WHERE id=#{id};
+    </select>
+    <!--更新用户信息-->
+    <select id="updateuser" parameterType="Integer" resultType="javaa.model.Updateuser">
+        SELECT * FROM updateuser WHERE id=#{id};
+    </select>
+
+
+
+    <!--添加用户接口-->
+    <select id="addUsers" parameterType="javaa.model.Adduser" resultType="javaa.model.User">
+        select * from user where
+        name=#{name}
+        and password=#{password}
+        and sex=#{sex}
+        and age=#{age}
+        and permission=#{permission}
+        and isDelete=#{isDelete};
+
+    </select>
+
+    <!--获取用户信息-->
+    <select id="getUserdemo" parameterType="javaa.model.Getuser" resultType="javaa.model.User">
+        <!-- SQL语句 -->
+        select * from user where
+        id=#{userid};
+    </select>
+
+    <!--获取用户列表-->
+    <select id="getUserListdemo" parameterType="javaa.model.GetuserList" resultType="javaa.model.User">
+        <!-- SQL语句 -->
+        select * from user
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="null != name and '' !=name">
+                AND name=#{name}
+            </if>
+            <if test="null != sex and '' !=sex">
+                AND sex=#{sex}
+            </if>
+            <if test="null != age and '' !=age">
+                AND age=#{age}
+            </if>
+
+        </trim>
+        ;
+    </select>
+
+    <!--获取更新后的数据-->
+    <select id="getUpdateUserInfodemo" parameterType="javaa.model.Updateuser" resultType="javaa.model.User">
+        select * from user
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="null != name and '' !=name">
+                AND name=#{name}
+            </if>
+            <if test="null != sex and '' !=sex">
+                AND sex=#{sex}
+            </if>
+            <if test="null != age and '' !=age">
+                AND age=#{age}
+            </if>
+            <if test="null != permission and '' !=permission">
+                AND permission=#{permission}
+            </if>
+            <if test="null != isDelete and '' !=isDelete">
+                AND isDelete=#{isDelete}
+            </if>
+        </trim>
+        And id = #{userid};
+    </select>
+</mapper>      

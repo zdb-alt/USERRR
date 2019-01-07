@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="用户管理系统测试套件">
+    <test name="这些是测试模块">
+        <classes>
+            <class name="javaa.cases.Login">
+                <methods>
+                    <include name="login"/>
+                    <include name="loginfalse"/>
+                </methods>
+            </class>
+            <class name="javaa.cases.Addusercase">
+                <methods>
+                    <include name="adduser"/>
+                </methods>
+            </class>
+            <class name="javaa.cases.GetuserCase">
+                <methods>
+                    <include name="getuser"/>
+                </methods>
+            </class>
+            <class name="javaa.cases.GetuserListCase">
+                <methods>
+                    <include name="getuserList"/>
+                </methods>
+            </class>
+            <class name="javaa.cases.UpdateUserCase">
+                <methods>
+                    <include name="updateUserCase"/>
+                    <include name="deleteUserCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="javaa.config.ExtentTestNGIReporterListener" />
+    </listeners>
+
+</suite>
